@@ -14,6 +14,7 @@
 		787B864D1B137A2F00023192 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 787B864B1B137A2F00023192 /* LaunchScreen.xib */; };
 		787B86591B137A2F00023192 /* TapLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787B86581B137A2F00023192 /* TapLabelTests.swift */; };
 		787B86631B137A3F00023192 /* TapLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787B86621B137A3F00023192 /* TapLabel.swift */; };
+		787B86651B139AF900023192 /* TapLabelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787B86641B139AF900023192 /* TapLabelDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		787B86571B137A2F00023192 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		787B86581B137A2F00023192 /* TapLabelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapLabelTests.swift; sourceTree = "<group>"; };
 		787B86621B137A3F00023192 /* TapLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapLabel.swift; sourceTree = "<group>"; };
+		787B86641B139AF900023192 /* TapLabelDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapLabelDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			children = (
 				787B86421B137A2F00023192 /* AppDelegate.swift */,
 				787B86621B137A3F00023192 /* TapLabel.swift */,
+				787B86641B139AF900023192 /* TapLabelDelegate.swift */,
 				787B86441B137A2F00023192 /* ViewController.swift */,
 				787B86461B137A2F00023192 /* Main.storyboard */,
 				787B86491B137A2F00023192 /* Images.xcassets */,
@@ -216,6 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				787B86451B137A2F00023192 /* ViewController.swift in Sources */,
+				787B86651B139AF900023192 /* TapLabelDelegate.swift in Sources */,
 				787B86431B137A2F00023192 /* AppDelegate.swift in Sources */,
 				787B86631B137A3F00023192 /* TapLabel.swift in Sources */,
 			);

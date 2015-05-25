@@ -9,9 +9,12 @@
 import Foundation
 import UIKit
 
-let TapLabelLinkTypeName = "TapLabelLinkTypeName"
-
 class TapLabel: UILabel, NSLayoutManagerDelegate {
+
+    static let LinkContentName = "TapLabelLinkContentName"
+    static let SelectedForegroudColorName = "TapLabelSelectedForegroudColorName"
+
+    weak var delegate: TapLabelDelegate?
 
     private let layoutManager = NSLayoutManager()
     private let textContainer = NSTextContainer()
@@ -19,7 +22,36 @@ class TapLabel: UILabel, NSLayoutManagerDelegate {
     private var rangesForUrls = [NSRange]()
     private var links = [String: NSRange]()
     private var isTouchMoved = false
-    private var selectedLink: String?
+    private var defaultSelectedForegroundColor: UIColor?
+
+    private var selected: (String, NSRange)? {
+        didSet {
+            if let (link, range) = selected
+            {
+                if let currentColor = textStorage.attribute(NSForegroundColorAttributeName,
+                    atIndex: range.location,
+                    effectiveRange: nil) as? UIColor
+                {
+                    defaultSelectedForegroundColor = currentColor
+                }
+
+                if let color = textStorage.attribute(TapLabel.SelectedForegroudColorName,
+                    atIndex: range.location,
+                    effectiveRange: nil) as? UIColor
+                {
+                    textStorage.addAttribute(NSForegroundColorAttributeName, value: color, range: range)
+                }
+            }
+            else if let (link, range) = oldValue
+            {
+                textStorage.addAttribute(NSForegroundColorAttributeName,
+                    value: defaultSelectedForegroundColor!,
+                    range: range)
+            }
+
+            setNeedsDisplay()
+        }
+    }
 
     override var lineBreakMode: NSLineBreakMode {
         didSet {
@@ -74,14 +106,13 @@ class TapLabel: UILabel, NSLayoutManagerDelegate {
     }
 
     func updateLinks() {
-        attributedText.enumerateAttribute(TapLabelLinkTypeName,
+        attributedText.enumerateAttribute(TapLabel.LinkContentName,
             inRange: NSMakeRange(0, attributedText.length),
             options: NSAttributedStringEnumerationOptions(0))
         {
             value, range, stop in
 
             if let v = value as? String {
-                println(range)
                 self.links[v] = range
             }
         }
@@ -142,7 +173,7 @@ class TapLabel: UILabel, NSLayoutManagerDelegate {
         return textOffset;
     }
 
-    func linkAtPoint(var point: CGPoint) -> String?
+    func linkAtPoint(var point: CGPoint) -> (String, NSRange)?
     {
         if textStorage.length == 0 {
             return nil
@@ -166,7 +197,7 @@ class TapLabel: UILabel, NSLayoutManagerDelegate {
         // Find the word that was touched and call the detection block
         for (link, range) in links {
             if range.location <= touchedChar && touchedChar < range.location + range.length {
-                return link
+                return (link, range)
             }
         }
         
@@ -178,11 +209,11 @@ class TapLabel: UILabel, NSLayoutManagerDelegate {
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent)
     {
         isTouchMoved = false
-        selectedLink = nil
+
         let touchLocation = (touches.first as! UITouch).locationInView(self)
 
-        if let link = linkAtPoint(touchLocation) {
-            selectedLink = link
+        if let (link, range) = linkAtPoint(touchLocation) {
+            selected = (link, range)
         } else {
             super.touchesBegan(touches, withEvent: event)
         }
@@ -196,11 +227,16 @@ class TapLabel: UILabel, NSLayoutManagerDelegate {
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         super.touchesEnded(touches, withEvent: event)
 
-        if isTouchMoved {
-            return
+        if !isTouchMoved {
+            delegate?.tapLabel(self, didSelectLink: selected!.0)
         }
 
-        println(selectedLink)
+        selected = nil
+    }
+
+    override func touchesCancelled(touches: Set<NSObject>!, withEvent event: UIEvent!) {
+        super.touchesCancelled(touches, withEvent: event)
+        selected = nil
     }
 
     //MARK: - NSLayoutManagerDelegate
