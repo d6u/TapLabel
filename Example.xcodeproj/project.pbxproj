@@ -12,7 +12,33 @@
 		782575701B13D859006F8DCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7825756E1B13D859006F8DCB /* Main.storyboard */; };
 		782575721B13D859006F8DCB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 782575711B13D859006F8DCB /* Images.xcassets */; };
 		782575751B13D859006F8DCB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 782575731B13D859006F8DCB /* LaunchScreen.xib */; };
+		78B60DAD1B13E99400AEDF62 /* TapLabel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B60DAA1B13E99000AEDF62 /* TapLabel.framework */; };
+		78B60DAE1B13E99400AEDF62 /* TapLabel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 78B60DAA1B13E99000AEDF62 /* TapLabel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		78B60DA91B13E99000AEDF62 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 78B60DA41B13E99000AEDF62 /* TapLabel.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 782575341B13D6E2006F8DCB;
+			remoteInfo = TapLabel;
+		};
+		78B60DAB1B13E99000AEDF62 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 78B60DA41B13E99000AEDF62 /* TapLabel.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7825753F1B13D6E2006F8DCB;
+			remoteInfo = TapLabelTests;
+		};
+		78B60DAF1B13E99400AEDF62 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 78B60DA41B13E99000AEDF62 /* TapLabel.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 782575331B13D6E2006F8DCB;
+			remoteInfo = TapLabel;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		782576811B13E33C006F8DCB /* Embed Frameworks */ = {
@@ -21,6 +47,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				78B60DAE1B13E99400AEDF62 /* TapLabel.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -35,6 +62,7 @@
 		7825756F1B13D859006F8DCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		782575711B13D859006F8DCB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		782575741B13D859006F8DCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		78B60DA41B13E99000AEDF62 /* TapLabel.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = TapLabel.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78B60DAD1B13E99400AEDF62 /* TapLabel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,6 +80,7 @@
 		7825755C1B13D859006F8DCB = {
 			isa = PBXGroup;
 			children = (
+				78B60DA41B13E99000AEDF62 /* TapLabel.xcodeproj */,
 				782575671B13D859006F8DCB /* Example */,
 				782575661B13D859006F8DCB /* Products */,
 			);
@@ -77,6 +107,15 @@
 			path = Example;
 			sourceTree = "<group>";
 		};
+		78B60DA51B13E99000AEDF62 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				78B60DAA1B13E99000AEDF62 /* TapLabel.framework */,
+				78B60DAC1B13E99000AEDF62 /* TapLabelTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -92,6 +131,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				78B60DB01B13E99400AEDF62 /* PBXTargetDependency */,
 			);
 			name = Example;
 			productName = Example;
@@ -122,12 +162,35 @@
 			mainGroup = 7825755C1B13D859006F8DCB;
 			productRefGroup = 782575661B13D859006F8DCB /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 78B60DA51B13E99000AEDF62 /* Products */;
+					ProjectRef = 78B60DA41B13E99000AEDF62 /* TapLabel.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				782575641B13D859006F8DCB /* Example */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		78B60DAA1B13E99000AEDF62 /* TapLabel.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = TapLabel.framework;
+			remoteRef = 78B60DA91B13E99000AEDF62 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		78B60DAC1B13E99000AEDF62 /* TapLabelTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = TapLabelTests.xctest;
+			remoteRef = 78B60DAB1B13E99000AEDF62 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		782575631B13D859006F8DCB /* Resources */ = {
@@ -153,6 +216,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		78B60DB01B13E99400AEDF62 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TapLabel;
+			targetProxy = 78B60DAF1B13E99400AEDF62 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		7825756E1B13D859006F8DCB /* Main.storyboard */ = {
