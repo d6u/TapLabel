@@ -6,10 +6,9 @@
 //  Copyright (c) 2015 Daiwei Lu. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
-class TapLabel: UILabel, NSLayoutManagerDelegate {
+public class TapLabel: UILabel, NSLayoutManagerDelegate {
 
     static let LinkContentName = "TapLabelLinkContentName"
     static let SelectedForegroudColorName = "TapLabelSelectedForegroudColorName"
@@ -53,19 +52,19 @@ class TapLabel: UILabel, NSLayoutManagerDelegate {
         }
     }
 
-    override var lineBreakMode: NSLineBreakMode {
+    override public var lineBreakMode: NSLineBreakMode {
         didSet {
             textContainer.lineBreakMode = lineBreakMode
         }
     }
 
-    override var numberOfLines: Int {
+    override public var numberOfLines: Int {
         didSet {
             textContainer.maximumNumberOfLines = numberOfLines
         }
     }
 
-    override var attributedText: NSAttributedString! {
+    override public var attributedText: NSAttributedString! {
         didSet {
             textStorage.setAttributedString(attributedText)
             updateLinks()
@@ -73,19 +72,19 @@ class TapLabel: UILabel, NSLayoutManagerDelegate {
         }
     }
 
-    override var frame: CGRect {
+    override public var frame: CGRect {
         didSet {
             textContainer.size = frame.size
         }
     }
 
-    override var bounds: CGRect {
+    override public var bounds: CGRect {
         didSet {
             textContainer.size = bounds.size
         }
     }
 
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
 
         textContainer.lineFragmentPadding = 0
@@ -101,7 +100,7 @@ class TapLabel: UILabel, NSLayoutManagerDelegate {
         userInteractionEnabled = true
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required public init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -109,12 +108,12 @@ class TapLabel: UILabel, NSLayoutManagerDelegate {
         attributedText.enumerateAttribute(TapLabel.LinkContentName,
             inRange: NSMakeRange(0, attributedText.length),
             options: NSAttributedStringEnumerationOptions(0))
-        {
-            value, range, stop in
+            {
+                value, range, stop in
 
-            if let v = value as? String {
-                self.links[v] = range
-            }
+                if let v = value as? String {
+                    self.links[v] = range
+                }
         }
     }
 
@@ -130,7 +129,7 @@ class TapLabel: UILabel, NSLayoutManagerDelegate {
         rangesForUrls = matches.map { $0.range }
     }
 
-    override func textRectForBounds(bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect
+    override public func textRectForBounds(bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect
     {
         let savedTextContainerSize = textContainer.size
         let savedTextContainerNumberOfLines = textContainer.maximumNumberOfLines
@@ -147,11 +146,11 @@ class TapLabel: UILabel, NSLayoutManagerDelegate {
 
         textContainer.size = savedTextContainerSize
         textContainer.maximumNumberOfLines = savedTextContainerNumberOfLines
-        
+
         return textBounds;
     }
 
-    override func drawTextInRect(rect: CGRect)
+    override public func drawTextInRect(rect: CGRect)
     {
         let glyphRange = layoutManager.glyphRangeForTextContainer(textContainer)
         let textOffset = calcTextOffsetForGlyphRange(glyphRange)
@@ -200,13 +199,13 @@ class TapLabel: UILabel, NSLayoutManagerDelegate {
                 return (link, range)
             }
         }
-        
+
         return nil
     }
 
     //MARK: - Interactions
 
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent)
+    override public func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent)
     {
         isTouchMoved = false
 
@@ -219,12 +218,12 @@ class TapLabel: UILabel, NSLayoutManagerDelegate {
         }
     }
 
-    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override public func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
         super.touchesMoved(touches, withEvent: event)
         isTouchMoved = true
     }
 
-    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override public func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         super.touchesEnded(touches, withEvent: event)
 
         if !isTouchMoved {
@@ -234,14 +233,14 @@ class TapLabel: UILabel, NSLayoutManagerDelegate {
         selected = nil
     }
 
-    override func touchesCancelled(touches: Set<NSObject>!, withEvent event: UIEvent!) {
+    override public func touchesCancelled(touches: Set<NSObject>!, withEvent event: UIEvent!) {
         super.touchesCancelled(touches, withEvent: event)
         selected = nil
     }
 
     //MARK: - NSLayoutManagerDelegate
 
-    func layoutManager(
+    public func layoutManager(
         layoutManager: NSLayoutManager,
         shouldBreakLineByWordBeforeCharacterAtIndex charIndex: Int) -> Bool
     {
@@ -252,5 +251,5 @@ class TapLabel: UILabel, NSLayoutManagerDelegate {
         }
         return true
     }
-
+    
 }
