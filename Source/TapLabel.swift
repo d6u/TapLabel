@@ -10,10 +10,10 @@ import UIKit
 
 public class TapLabel: UILabel, NSLayoutManagerDelegate {
 
-    static let LinkContentName = "TapLabelLinkContentName"
-    static let SelectedForegroudColorName = "TapLabelSelectedForegroudColorName"
+    public static let LinkContentName = "TapLabelLinkContentName"
+    public static let SelectedForegroudColorName = "TapLabelSelectedForegroudColorName"
 
-    weak var delegate: TapLabelDelegate?
+    public weak var delegate: TapLabelDelegate?
 
     private let layoutManager = NSLayoutManager()
     private let textContainer = NSTextContainer()
