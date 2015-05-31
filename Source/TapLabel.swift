@@ -105,6 +105,8 @@ public class TapLabel: UILabel, NSLayoutManagerDelegate {
     }
 
     private func updateLinks() {
+        links = [String: NSRange]()
+
         attributedText.enumerateAttribute(TapLabel.LinkContentName,
             inRange: NSMakeRange(0, attributedText.length),
             options: NSAttributedStringEnumerationOptions(0))
@@ -221,6 +223,7 @@ public class TapLabel: UILabel, NSLayoutManagerDelegate {
     public override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
         super.touchesMoved(touches, withEvent: event)
         isTouchMoved = true
+        selected = nil
     }
 
     public override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
