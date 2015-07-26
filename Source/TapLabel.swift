@@ -229,8 +229,8 @@ public class TapLabel: UILabel, NSLayoutManagerDelegate {
     public override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         super.touchesEnded(touches, withEvent: event)
 
-        if !isTouchMoved {
-            delegate?.tapLabel(self, didSelectLink: selected!.0)
+        if let selected = self.selected where !isTouchMoved {
+            delegate?.tapLabel(self, didSelectLink: selected.0)
         }
 
         selected = nil

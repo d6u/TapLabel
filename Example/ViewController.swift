@@ -23,7 +23,12 @@ class ViewController: UIViewController, TapLabelDelegate {
             "explain why this is the case http://www.adweek.com/socialtimes/the-reason-for-the-160-character-text-message-and-140-character-twitter-length-limits/4914."
 
         let text = NSMutableAttributedString(string: str, attributes: [
-            NSFontAttributeName: UIFont.systemFontOfSize(16)
+            NSFontAttributeName: UIFont.systemFontOfSize(16),
+            NSParagraphStyleAttributeName: {
+                let p = NSMutableParagraphStyle()
+                p.lineSpacing = 5
+                return p
+            }()
         ])
 
         text.addAttribute(TapLabel.LinkContentName, value: "test", range: NSMakeRange(10, 20))
@@ -35,6 +40,9 @@ class ViewController: UIViewController, TapLabelDelegate {
         l.numberOfLines = 0
 
         l.sizeToFit()
+
+        l.layer.borderColor = UIColor.blackColor().CGColor
+        l.layer.borderWidth = 1
 
         view.addSubview(l)
     }
