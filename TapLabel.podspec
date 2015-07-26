@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = 'TapLabel'
-  spec.version = '0.0.2'
+  spec.version = '0.0.3'
   spec.summary = 'Add links and actions to UILabel.'
   spec.homepage = 'https://github.com/d6u/TapLabel'
   spec.license = { :type => 'MIT', :file => 'LICENSE' }
