@@ -40,6 +40,8 @@ class ViewController: UIViewController, TapLabelDelegate {
         l.numberOfLines = 0
 
         l.sizeToFit()
+        println(l.fitHeight)
+        println(l.frame.height)
 
         l.layer.borderColor = UIColor.blackColor().CGColor
         l.layer.borderWidth = 1

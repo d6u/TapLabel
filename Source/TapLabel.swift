@@ -254,5 +254,15 @@ public class TapLabel: UILabel, NSLayoutManagerDelegate {
         }
         return true
     }
+
+    // MARK: - Public API
+
+    public var fitHeight: CGFloat {
+        let frame = self.frame
+        self.sizeToFit()
+        let height = self.frame.height
+        self.frame = frame
+        return height
+    }
     
 }
