@@ -1,6 +1,6 @@
 # TapLabel
 
-A shameless fork of Krelborn/KILabel that replaces auto link detection with manual adding links.
+A shameless fork of [Krelborn/KILabel](https://github.com/Krelborn/KILabel) that replaces auto link detection with manual adding links.
 
 ## Usage
 
