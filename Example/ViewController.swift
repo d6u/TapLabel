@@ -27,21 +27,22 @@ class ViewController: UIViewController, TapLabelDelegate {
             NSParagraphStyleAttributeName: {
                 let p = NSMutableParagraphStyle()
                 p.lineSpacing = 5
+                p.alignment = NSTextAlignment.Center
                 return p
             }()
         ])
 
-        text.addAttribute(TapLabel.LinkContentName, value: "test", range: NSMakeRange(10, 20))
-        text.addAttribute(NSForegroundColorAttributeName, value: UIColor.blueColor(), range: NSMakeRange(10, 20))
-        text.addAttribute(TapLabel.SelectedForegroudColorName, value: UIColor.redColor(), range: NSMakeRange(10, 20))
+        text.addAttribute(TapLabel.LinkContentName, value: "test", range: NSMakeRange(30, 20))
+        text.addAttribute(NSForegroundColorAttributeName, value: UIColor.blueColor(), range: NSMakeRange(30, 20))
+        text.addAttribute(TapLabel.SelectedForegroudColorName, value: UIColor.redColor(), range: NSMakeRange(30, 20))
 
         l.attributedText = text
         l.lineBreakMode = .ByWordWrapping
         l.numberOfLines = 0
 
         l.sizeToFit()
-        println(l.fitHeight)
-        println(l.frame.height)
+        print(l.fitHeight)
+        print(l.frame.height)
 
         l.layer.borderColor = UIColor.blackColor().CGColor
         l.layer.borderWidth = 1
@@ -50,6 +51,6 @@ class ViewController: UIViewController, TapLabelDelegate {
     }
 
     func tapLabel(tapLabel: TapLabel, didSelectLink link: String) {
-        println(link)
+        print(link)
     }
 }
